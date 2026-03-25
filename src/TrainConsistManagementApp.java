@@ -1,42 +1,29 @@
-import java.util.LinkedList;
-import java.util.Queue;
-
-// Reservation class
-class Reservation {
-    String guestName;
-    String roomType;
-
-    public Reservation(String guestName, String roomType) {
-        this.guestName = guestName;
-        this.roomType = roomType;
-    }
-
-    @Override
-    public String toString() {
-        return guestName + " requested " + roomType;
-    }
-}
+import java.util.HashMap;
+import java.util.Map;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Book My Stay App ===");
+        System.out.println("=== Train Consist Management App ===");
 
-        // Create booking request queue
-        Queue<Reservation> bookingQueue = new LinkedList<>();
+        // Create HashMap for bogie and capacity
+        Map<String, Integer> bogieCapacityMap = new HashMap<>();
 
-        // Guest submits booking requests
-        bookingQueue.add(new Reservation("Alice", "Deluxe Room"));
-        bookingQueue.add(new Reservation("Bob", "Suite"));
-        bookingQueue.add(new Reservation("Charlie", "Standard Room"));
+        // Insert bogie-capacity pairs
+        bogieCapacityMap.put("Sleeper", 72);
+        bogieCapacityMap.put("AC Chair", 78);
+        bogieCapacityMap.put("First Class", 24);
+        bogieCapacityMap.put("Cargo Rectangular", 100);
+        bogieCapacityMap.put("Cargo Cylindrical", 120);
 
-        // Display queued requests
-        System.out.println("\nBooking Requests in Queue (FIFO Order):");
-        for (Reservation r : bookingQueue) {
-            System.out.println(r);
+        // Display bogie capacities
+        System.out.println("\nBogie Capacity Details:");
+
+        for (Map.Entry<String, Integer> entry : bogieCapacityMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> Capacity: " + entry.getValue());
         }
 
-        System.out.println("\nRequests are queued and waiting for processing...");
+        System.out.println("\nCapacity mapping complete.");
     }
 }
