@@ -1,39 +1,42 @@
 import java.util.LinkedList;
+import java.util.Queue;
+
+// Reservation class
+class Reservation {
+    String guestName;
+    String roomType;
+
+    public Reservation(String guestName, String roomType) {
+        this.guestName = guestName;
+        this.roomType = roomType;
+    }
+
+    @Override
+    public String toString() {
+        return guestName + " requested " + roomType;
+    }
+}
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management App ===");
+        System.out.println("=== Book My Stay App ===");
 
-        // Create LinkedList for train consist
-        LinkedList<String> train = new LinkedList<>();
+        // Create booking request queue
+        Queue<Reservation> bookingQueue = new LinkedList<>();
 
-        // Add bogies
-        train.add("Engine");
-        train.add("Sleeper");
-        train.add("AC");
-        train.add("Cargo");
-        train.add("Guard");
+        // Guest submits booking requests
+        bookingQueue.add(new Reservation("Alice", "Deluxe Room"));
+        bookingQueue.add(new Reservation("Bob", "Suite"));
+        bookingQueue.add(new Reservation("Charlie", "Standard Room"));
 
-        System.out.println("Initial Train Consist:");
-        System.out.println(train);
+        // Display queued requests
+        System.out.println("\nBooking Requests in Queue (FIFO Order):");
+        for (Reservation r : bookingQueue) {
+            System.out.println(r);
+        }
 
-        // Insert Pantry Car at position 2
-        train.add(2, "Pantry");
-
-        System.out.println("\nAfter adding Pantry at position 2:");
-        System.out.println(train);
-
-        // Remove first and last bogie
-        train.removeFirst();
-        train.removeLast();
-
-        System.out.println("\nAfter removing first and last bogie:");
-        System.out.println(train);
-
-        // Final consist
-        System.out.println("\nFinal Train Consist:");
-        System.out.println(train);
+        System.out.println("\nRequests are queued and waiting for processing...");
     }
 }
