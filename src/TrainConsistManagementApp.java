@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 public class TrainConsistManagementApp {
 
@@ -7,31 +6,34 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // Create ArrayList for passenger bogies
-        List<String> passengerBogies = new ArrayList<>();
+        // Create LinkedList for train consist
+        LinkedList<String> train = new LinkedList<>();
 
         // Add bogies
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        train.add("Engine");
+        train.add("Sleeper");
+        train.add("AC");
+        train.add("Cargo");
+        train.add("Guard");
 
-        // Display bogies after insertion
-        System.out.println("Passenger Bogies after addition:");
-        System.out.println(passengerBogies);
+        System.out.println("Initial Train Consist:");
+        System.out.println(train);
 
-        // Remove a bogie (AC Chair)
-        passengerBogies.remove("AC Chair");
+        // Insert Pantry Car at position 2
+        train.add(2, "Pantry");
 
-        // Display after removal
-        System.out.println("\nAfter removing AC Chair:");
-        System.out.println(passengerBogies);
+        System.out.println("\nAfter adding Pantry at position 2:");
+        System.out.println(train);
 
-        // Check if Sleeper exists
-        boolean exists = passengerBogies.contains("Sleeper");
-        System.out.println("\nDoes Sleeper exist? " + exists);
+        // Remove first and last bogie
+        train.removeFirst();
+        train.removeLast();
 
-        // Final state
-        System.out.println("\nFinal Passenger Bogies List:");
-        System.out.println(passengerBogies);
+        System.out.println("\nAfter removing first and last bogie:");
+        System.out.println(train);
+
+        // Final consist
+        System.out.println("\nFinal Train Consist:");
+        System.out.println(train);
     }
 }
